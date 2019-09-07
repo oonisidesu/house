@@ -12,6 +12,6 @@ class House extends Model
     public static $rules = array(
         'title' => 'required',
         'content' => 'required',
-        'image_url' => 'required'
+        'image_url' => ''
     );
 }
