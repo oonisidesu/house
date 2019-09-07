@@ -29,6 +29,6 @@ class HouseController extends Controller
         unset($form['_token']);
 
         $board->fill($form)->save();
-        return redirect('/house');
+        return redirect('/');
     }
 }

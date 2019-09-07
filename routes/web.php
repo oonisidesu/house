@@ -11,6 +11,10 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+
+Route::get('/', 'HouseController@index');
+Route::get('add', 'HouseController@add');
+Route::post('add', 'HouseController@create');

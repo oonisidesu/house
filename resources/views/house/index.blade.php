@@ -28,7 +28,7 @@
 
                     <!-- 編集ボタン -->
 										<td>
-											<form action="/book/edit" method="POST">
+											<form action="/edit" method="POST">
 												@csrf
 												<button type="submit" class="btn btn-info">
 													<i class="fa fa-trash"></i>編集
@@ -38,7 +38,7 @@
 
 										<!-- 削除ボタン -->
 										<td>
-											<form action="/book/del" method="POST">
+											<form action="/del" method="POST">
 												@csrf
 												<button type="submit" class="btn btn-danger">
 													<i class="fa fa-trash"></i>削除

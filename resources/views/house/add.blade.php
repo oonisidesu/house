@@ -5,14 +5,12 @@
 		<div class="col-sm-offset-2 col-sm-8">
 			<div class="panel panel-default">
 				<div class="panel-heading">
-					馬を追加する
+					馬を投稿する
 				</div>
 
 				<div class="panel-body">
-					@include('common.errors')
-
 					<!-- 馬を追加するフォーム -->
-					<form action="/house" method="POST" class="form-horizontal">
+					<form action="/add" method="POST" class="form-horizontal">
 						@csrf
 
 						<!-- 馬のタイトル -->
