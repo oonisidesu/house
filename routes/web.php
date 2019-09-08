@@ -15,7 +15,7 @@
 //     return view('welcome');
 // });
 
-Route::get('/', 'HouseController@index');
+Route::get('/', 'HouseController@index')->middleware('auth');
 Route::get('add', 'HouseController@add')->name('house_add');
 Route::post('add', 'HouseController@create');
 Route::get('edit', 'HouseController@edit')->name('house_edit');
