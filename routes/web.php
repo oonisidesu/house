@@ -16,7 +16,9 @@
 // });
 
 Route::get('/', 'HouseController@index');
-Route::get('add', 'HouseController@add');
+Route::get('add', 'HouseController@add')->name('house_add');
 Route::post('add', 'HouseController@create');
 Route::get('edit', 'HouseController@edit')->name('house_edit');
 Route::post('edit', 'HouseController@update');
+Route::get('del', 'HouseController@delete')->name('house_del');
+Route::post('del', 'HouseController@remove');

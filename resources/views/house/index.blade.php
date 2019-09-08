@@ -8,7 +8,13 @@
 			@if (count($items) > 0)
 				<div class="panel panel-default">
 					<div class="panel-heading">
-						馬の一覧
+            馬の一覧
+            <!-- 編集ボタン -->
+            <a href="{{route('house_add')}}">
+              <button type="submit" class="btn btn-default">
+                <i class="fa fa-plus"></i>追加
+              </button>
+            </a>
 					</div>
 
 					<div class="panel-body">
@@ -34,16 +40,17 @@
 
 										<td>
                       <!-- 編集ボタン -->
-                      <button type="submit" class="btn btn-default">
-                        <a href="{{route('house_edit')}}?id={{$item->id}}"><i class="fa fa-pencil"></i>編集</a>
-                      </button>
+                      <a href="{{route('house_edit')}}?id={{$item->id}}">
+                        <button type="submit" class="btn btn-info">
+                          <i class="fa fa-pencil"></i>編集
+                        </button>
+                      </a>
                       <!-- 削除ボタン -->
-											<form action="/del" method="POST">
-												@csrf
-												<button type="submit" class="btn btn-danger">
-													<i class="fa fa-trash"></i>削除
-												</button>
-											</form>
+                      <a href="{{route('house_del')}}?id={{$item->id}}">
+                        <button type="submit" class="btn btn-danger">
+                          <i class="fa fa-trash"></i>削除
+                        </button>
+                      </a>
 										</td>
 									</tr>
 								@endforeach

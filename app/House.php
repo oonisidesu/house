@@ -10,8 +10,8 @@ class House extends Model
     protected $guarded = array('id');
 
     public static $rules = array(
-        'title' => 'required',
-        'content' => 'required',
+        'title' => 'required|max:10',
+        'content' => 'required|min:5|max:100',
         'image_url' => 'required'
     );
 }

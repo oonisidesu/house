@@ -75,4 +75,20 @@ class HouseController extends Controller
         //一覧表示にリダイレクト
         return redirect('/');
     }
+
+    //投稿削除アクション(get)
+    public function delete(Request $request){
+        $house = House::find($request->id);
+        return view('house.del', ['form' => $house]);
+    }
+
+    //投稿削除アクション(post)
+    public function remove(Request $request){
+        $house = House::find($request->id);
+        if ($house) {
+            $house->delete();
+        }
+        //一覧表示にリダイレクト
+        return redirect('/');
+    }
 }
