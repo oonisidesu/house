@@ -5,7 +5,7 @@
 		<div class="col-sm-offset-2 col-sm-8">
 			<div class="panel panel-default">
 			<!-- 馬の掲示板一覧 -->
-			@if (count($houses) > 0)
+			@if (count($items) > 0)
 				<div class="panel panel-default">
 					<div class="panel-heading">
 						馬の一覧
@@ -14,30 +14,33 @@
 					<div class="panel-body">
 						<table class="table table-striped task-table">
 							<thead>
-								<th>馬</th>
+                <th>タイトル</th>
+                <th>内容</th>
+                <th>画像</th>
 								<th>&nbsp;</th>
 							</thead>
 							<tbody>
-								@foreach ($houses as $house)
+                @foreach ($items as $item)
 									<tr>
-                    <td class="table-text"><div>{{ $house->title }}</div></td>
-                    <td class="table-text"><div>{{ $house->context }}</div></td>
-                    @if ($image_url)
-                      <p><img src ="/{{ $house->image_url }}" width="450px"></p>
-                    @endif
-
-                    <!-- 編集ボタン -->
-										<td>
-											<form action="/edit" method="POST">
-												@csrf
-												<button type="submit" class="btn btn-info">
-													<i class="fa fa-trash"></i>編集
-												</button>
-											</form>
+                    <td class="table-text">
+                      {{ $item->title }}
+                    </td>
+                    <td class="table-text">
+                      {{ $item->content }}
+                    </td>
+                    <td class="table-text">
+                      <img src ="/{{ $item->image_url }}" width="50px">
                     </td>
 
-										<!-- 削除ボタン -->
 										<td>
+                      <!-- 編集ボタン -->
+                      <form action="/edit" method="POST">
+                        @csrf
+                        <button type="submit" class="btn btn-info">
+                          <i class="fa fa-pencil"></i>編集
+                        </button>
+                      </form>
+                      <!-- 削除ボタン -->
 											<form action="/del" method="POST">
 												@csrf
 												<button type="submit" class="btn btn-danger">

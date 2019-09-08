@@ -16,19 +16,35 @@ class HouseController extends Controller
     }
 
     //投稿機能アクション(get)
-    public function add(Request $request){
+    public function add(){
         return view('house.add');
     }
 
     //投稿機能アクション(post)
     public function create(Request $request){
+        //バリデーションを設定（Houseモデルに詳細がある）
         $this->validate($request, House::$rules);
+
+        //Houseモデルのインスタンスを作成
         $house = new House;
-        $form = $request->all();
+
         //フォームに追加される非表示フィールドをunsetで削除
+        $form = $request->all();
         unset($form['_token']);
 
-        $board->fill($form)->save();
+        //タイトル
+        $house->title = $request->title;
+
+        //コンテンツ
+        $house->content = $request->content;
+
+        //画像(storeAsが)
+        $house->image_url = $request->image_url; //->storeAs('public/house_images', $time. '.jpg');
+
+        //houseインスタンスの情報をデータベースに保存
+        $house->save();
+
+        //一覧表示にリダイレクト
         return redirect('/');
     }
 }

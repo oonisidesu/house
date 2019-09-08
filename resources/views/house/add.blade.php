@@ -10,33 +10,33 @@
 
 				<div class="panel-body">
 					<!-- 馬を追加するフォーム -->
-					<form action="/add" method="POST" class="form-horizontal">
+					<form action="/add" method="POST" class="form-horizontal"　enctype="multipart/form-data">
 						@csrf
 
 						<!-- 馬のタイトル -->
 						<div class="form-group">
-							<label for="task-name" class="col-sm-3 control-label">タイトル</label>
+							<label for="title1" class="col-sm-3 control-label">タイトル</label>
 
 							<div class="col-sm-6">
-								<input type="text" name="title" class="form-control" value="{{ old('title') }}">
+								<input type="text" name="title" id="title1" class="form-control" value="{{ old('title') }}">
 							</div>
             </div>
 
             <!-- 馬のコンテンツ -->
             <div class="form-group">
-							<label for="task-name" class="col-sm-3 control-label">本文</label>
+							<label for="content1" class="col-sm-3 control-label">本文</label>
 
 							<div class="col-sm-6">
-								<input type="text" name="content" class="form-control" value="{{ old('content') }}">
+								<textarea name="content" id="content" class="form-control1" value="{{ old('content') }}"></textarea>
 							</div>
             </div>
 
             <!-- 馬の画像url -->
             <div class="form-group">
-							<label for="task-name" class="col-sm-3 control-label">馬の画像</label>
+							<label for="image_url1" class="col-sm-3 control-label">馬の画像</label>
 
 							<div class="col-sm-6">
-								<input type="file" name="image_url" class="form-control">
+								<input type="file" name="image_url" id="image_url1" class="form-control">
 							</div>
 						</div>
 
