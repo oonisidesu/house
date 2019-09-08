@@ -35,7 +35,7 @@
                       {{ $item->content }}
                     </td>
                     <td class="table-text">
-                      <img src ="/{{ $item->image_url }}" width="50px">
+                      <img src ="/storage/{{$item->image_url}}" width="100px" height="100px">
                     </td>
 
 										<td>

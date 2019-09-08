@@ -4,7 +4,8 @@ namespace App\Http\Controllers;
 
 //Houseモデルを使う
 use App\House;
-
+//Authモデルを使う
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
 class HouseController extends Controller
@@ -35,7 +36,12 @@ class HouseController extends Controller
         $house->content = $request->content;
 
         //画像(storeAsが)
-        $house->image_url = $request->image_url; //->storeAs('public/house_images', $time. '.jpg');
+        $house->image_url = $request->image_url;
+
+        if($house->image_url->isValid()){
+            $filePath = $house->image_url->store('public');
+            $house->image_url = str_replace('public/', '', $filePath);
+        }
 
         //houseインスタンスの情報をデータベースに保存
         $house->save();
@@ -66,8 +72,8 @@ class HouseController extends Controller
         //コンテンツ
         $house->content = $request->content;
 
-        //画像(storeAsが)
-        $house->image_url = $request->image_url; //->storeAs('public/house_images', $time. '.jpg');
+        //画像
+        $house->image_url = $request->image_url->storeAs('public/profile_images', $request->id . '.jpg');
 
         //houseインスタンスの情報をデータベースに保存
         $house->save();
