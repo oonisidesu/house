@@ -22,3 +22,8 @@ Route::get('edit', 'HouseController@edit')->name('house_edit');
 Route::post('edit', 'HouseController@update');
 Route::get('del', 'HouseController@delete')->name('house_del');
 Route::post('del', 'HouseController@remove');
+Route::auth();
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
