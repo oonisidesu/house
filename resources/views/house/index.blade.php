@@ -34,12 +34,9 @@
 
 										<td>
                       <!-- 編集ボタン -->
-                      <form action="/edit" method="POST">
-                        @csrf
-                        <button type="submit" class="btn btn-info">
-                          <i class="fa fa-pencil"></i>編集
-                        </button>
-                      </form>
+                      <button type="submit" class="btn btn-default">
+                        <a href="{{route('house_edit')}}?id={{$item->id}}"><i class="fa fa-pencil"></i>編集</a>
+                      </button>
                       <!-- 削除ボタン -->
 											<form action="/del" method="POST">
 												@csrf

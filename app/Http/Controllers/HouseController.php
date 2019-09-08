@@ -28,7 +28,35 @@ class HouseController extends Controller
         //Houseモデルのインスタンスを作成
         $house = new House;
 
-        //フォームに追加される非表示フィールドをunsetで削除
+        //タイトル
+        $house->title = $request->title;
+
+        //コンテンツ
+        $house->content = $request->content;
+
+        //画像(storeAsが)
+        $house->image_url = $request->image_url; //->storeAs('public/house_images', $time. '.jpg');
+
+        //houseインスタンスの情報をデータベースに保存
+        $house->save();
+
+        //一覧表示にリダイレクト
+        return redirect('/');
+    }
+
+    //投稿編集アクション(get)
+    public function edit(Request $request){
+        $house = House::find($request->id);
+        return view('house.edit', ['form' => $house]);
+    }
+
+    //投稿編集アクション(post)
+    public function update(Request $request){
+        //バリデーションを設定（Houseモデルに詳細がある）
+        $this->validate($request, House::$rules);
+
+        //編集するidのレコードを変数houseに入れる
+        $house = House::find($request->id);
         $form = $request->all();
         unset($form['_token']);
 

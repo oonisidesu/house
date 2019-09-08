@@ -18,3 +18,5 @@
 Route::get('/', 'HouseController@index');
 Route::get('add', 'HouseController@add');
 Route::post('add', 'HouseController@create');
+Route::get('edit', 'HouseController@edit')->name('house_edit');
+Route::post('edit', 'HouseController@update');
