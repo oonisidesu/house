@@ -14,4 +14,9 @@ class House extends Model
         'content' => 'required|min:5|max:100',
         'image_url' => 'required'
     );
+
+    // UserモデルをHouseで扱える？
+    public function user(){
+        return $this->belongsTo('App\User');
+    }
 }

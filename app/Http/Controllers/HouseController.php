@@ -31,6 +31,9 @@ class HouseController extends Controller
         //Houseモデルのインスタンスを作成
         $house = new House;
 
+        //user_id
+        $house->user_id = $request->user()->id;
+
         //タイトル
         $house->title = $request->title;
 
