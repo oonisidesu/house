@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 //Houseモデルを使う
 use App\House;
+use DB;
 //Authモデルを使う
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
@@ -12,7 +13,8 @@ class HouseController extends Controller
 {
     //一覧表示アクション
     public function index(Request $request){
-        $items = House::all();
+        //ページネーションを設定
+        $items = DB::table('houses')->simplePaginate(2);
         return view('house.index', ['items' => $items]);
     }
 

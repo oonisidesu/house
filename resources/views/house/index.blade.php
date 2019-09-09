@@ -55,10 +55,11 @@
 									</tr>
 								@endforeach
 							</tbody>
-						</table>
+            </table>
 					</div>
 				</div>
 			@endif
 		</div>
-	</div>
+  </div>
+  {{ $items->links() }}
 @endsection
