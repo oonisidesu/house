@@ -46,9 +46,10 @@ class HouseController extends Controller
         //isValid()で画像をアップロードできたのか確認
         if($house->image_url->isValid()){
             $filePath = $house->image_url->store('public');
+            //srt_replaceでfilePathの'public/'を''にしている
             $house->image_url = str_replace('public/', '', $filePath);
         }
-        //画像
+        //画像をid.jpgで保存（idは変数）
         $house->image_url = $request->image_url->storeAs('public/profile_images', $request->id . '.jpg');
 
         //houseインスタンスの情報をデータベースに保存
